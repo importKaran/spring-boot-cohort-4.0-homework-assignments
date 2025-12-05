@@ -2,6 +2,7 @@ package com.importKaran.assignments.module1.core;
 
 import com.importKaran.assignments.module1.interfaces.Frosting;
 import com.importKaran.assignments.module1.interfaces.Syrup;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -10,7 +11,7 @@ public class CakeBaker {
     private final Frosting frosting;
     private final Syrup syrup;
 
-    public CakeBaker(Frosting frosting, Syrup syrup) {
+    public CakeBaker(Frosting frosting, @Qualifier("strawberry") Syrup syrup) {
         this.frosting = frosting;
         this.syrup = syrup;
     }

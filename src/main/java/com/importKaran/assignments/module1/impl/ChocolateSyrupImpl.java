@@ -1,11 +1,12 @@
 package com.importKaran.assignments.module1.impl;
 
 import com.importKaran.assignments.module1.interfaces.Syrup;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConditionalOnProperty(name = "syrup.type", havingValue = "chocolate")
+@Qualifier("chocolate")
 public class ChocolateSyrupImpl implements Syrup {
 
     @Override
