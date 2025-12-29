@@ -9,6 +9,8 @@ Will be uploading all the assignments, on weekly basis, in this repository.
    
    Additional: Posted a sample CRUD operation using H2 DB and all dependencies and properties to make it run!
    Also, pushed changes with ModelMapper for both, object and list, for transforming from Entity to DTO and vice versa!
+
+   Updated Patch API, with generic way to map all primitive as well as non-primitive (including LocalDate), without explicit conversion!
 4. Module 3 Homework / Week 3 Assignment - In progress, Stay tuned!
 5. Module 4 Homework / Week 4 Assignment - In progress, Stay tuned!
 6. Module 5 Homework / Week 5 Assignment - In progress, Stay tuned!
