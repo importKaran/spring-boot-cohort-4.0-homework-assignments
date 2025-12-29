@@ -1,5 +1,6 @@
 package com.importKaran.assignments.module2.h2DB.workingExample;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +19,7 @@ public class EmployeeEntity {
     private String name;
     private Long age;
     private String email;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate joiningDate;
     private Boolean isActive;
 }

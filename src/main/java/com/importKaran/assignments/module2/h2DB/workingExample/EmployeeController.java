@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class EmployeeController {
@@ -40,9 +41,10 @@ public class EmployeeController {
     }
 
 //    Update an employee record - PATCH
-    @PatchMapping("/update")
-    public EmployeeResponse updateEmployeeByPatch(@RequestBody EmployeeRequest requestBody) {
-        return service.updateEmployeeByPatch(requestBody);
+    @PatchMapping("/update/{employeeId}")
+    public EmployeeResponse updateEmployeeByPatch(@RequestBody Map<String, Object> fieldsToBeUpdated,
+                                                  @PathVariable(name = "employeeId") Long id) {
+        return service.updateEmployeeByPatch(fieldsToBeUpdated, id);
     }
 
 //    Delete employee by ID

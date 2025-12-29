@@ -1,16 +1,22 @@
 package com.importKaran.assignments.module2.h2DB.workingExample;
 
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.ReflectionUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Setter
@@ -21,6 +27,9 @@ public class EmployeeService {
 
     @Autowired
     private EmployeeRepository repo;
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     private final ModelMapper mapper = new ModelMapper();
 
@@ -79,8 +88,27 @@ public class EmployeeService {
         return response;
     }
 
-    public EmployeeResponse updateEmployeeByPatch(EmployeeRequest requestBody) {
-        return updateEmployeeByPut(requestBody);
+    public EmployeeResponse updateEmployeeByPatch(Map<String, Object> fieldsToBeUpdated, Long id){
+
+        EmployeeEntity entity = repo.findById(id).orElse(null);
+        if(entity == null)
+            return null;
+
+        fieldsToBeUpdated
+                .forEach((fieldName, fieldValue) -> {
+                    Field fieldToBeUpdated = ReflectionUtils.getRequiredField(EmployeeEntity.class, fieldName);
+                    fieldToBeUpdated.setAccessible(true);
+
+//                    This will take care of primitive types, as well as non-primitive
+//                    Including LocalDate conversion
+                    Object fieldValueAfterConvertingToCorrectType =
+                            objectMapper.convertValue(fieldValue, objectMapper
+                                                    .getTypeFactory()
+                                                    .constructType(fieldToBeUpdated.getType()));
+                    ReflectionUtils.setField(fieldToBeUpdated, entity, fieldValueAfterConvertingToCorrectType);
+                });
+
+        return mapper.map(repo.save(entity), EmployeeResponse.class);
     }
 
     public ResponseEntity<HttpStatus> deleteEmployee(Long id) {
