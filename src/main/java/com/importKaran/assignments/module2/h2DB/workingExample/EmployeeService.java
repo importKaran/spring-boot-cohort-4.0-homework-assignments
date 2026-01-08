@@ -17,6 +17,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Setter
@@ -50,7 +51,7 @@ public class EmployeeService {
     public EmployeeResponse fetchEmployeeById(Long id) {
 
         EmployeeResponse response = new EmployeeResponse();
-        EmployeeEntity entity = repo.findById(id).orElse(null);
+        EmployeeEntity entity = repo.findById(id).orElseThrow(() -> new NoSuchElementException("Resource Not Found!"));
         mapper.map(entity, response);
         return response;
     }

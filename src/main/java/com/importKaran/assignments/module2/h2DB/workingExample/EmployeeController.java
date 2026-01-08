@@ -1,5 +1,6 @@
 package com.importKaran.assignments.module2.h2DB.workingExample;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class EmployeeController {
 
 //    Create a new employee
     @PostMapping("/create-employee")
-    public EmployeeResponse createNewEmployee(@RequestBody EmployeeRequest requestBody) {
+    public EmployeeResponse createNewEmployee(@RequestBody @Valid EmployeeRequest requestBody) {
         return service.createNewEmployee(requestBody);
     }
 
