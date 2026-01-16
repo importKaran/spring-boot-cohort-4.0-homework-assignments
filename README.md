@@ -5,7 +5,9 @@ Will be uploading all the assignments, on weekly basis, in this repository.
 
    This part included about multiple implementation of interface, and how they can be handled either using @Qualifier (in the case of Syrup implementation) or how they can be handled using application.properties (in the case of Frosting implementation)
 
-2. Module 2 Homework / Week 2 Assignment - In progress, Stay tuned!
+2. Module 2 Homework / Week 2 Assignment - Uploaded!
+
+   This assignment included multiple things, like PATCH API implementation (without explicit conversion), RestControllerAdvice for handling global exceptions and also formatting all the responses (including String and ResponseEntity<String> response handling), Custom annotation along with standard annotations for validations.
    
    Additional: Posted a sample CRUD operation using H2 DB and all dependencies and properties to make it run!
    Also, pushed changes with ModelMapper for both, object and list, for transforming from Entity to DTO and vice versa!
