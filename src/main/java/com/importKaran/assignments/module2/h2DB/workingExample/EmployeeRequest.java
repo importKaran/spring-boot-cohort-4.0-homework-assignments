@@ -1,6 +1,5 @@
 package com.importKaran.assignments.module2.h2DB.workingExample;
 
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,16 +1,13 @@
 package com.importKaran.assignments.module2.h2DB.workingExample;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
-import org.apache.tomcat.jni.AprStatus;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.util.*;
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @RestControllerAdvice

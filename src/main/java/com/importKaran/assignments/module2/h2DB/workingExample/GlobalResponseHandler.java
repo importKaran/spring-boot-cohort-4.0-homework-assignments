@@ -13,7 +13,9 @@ public class GlobalResponseHandler implements ResponseBodyAdvice<Object> {
 
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
-        return true;
+        // if this is made true, then there will be RestControllerAdvice, and both of them will try
+        // to wrap the response inside one another, so for the other RestControllerAdvice to work, making this as false
+        return false;
     }
 
     @Override

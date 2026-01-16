@@ -1,0 +1,308 @@
+{
+  "info": {
+    "_postman_id": "02181edc-2feb-4e95-af2a-335d121faf4c",
+    "name": "Module2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51466542"
+  },
+  "item": [
+    {
+      "name": "Employees",
+      "item": [
+        {
+          "name": "GetAllEmployees",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/employees",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "employees"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetEmployeeById",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/employees/56",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "employees",
+                "56"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CreateNewEmployee",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"id\": null,\r\n  \"isEmployeeActive\": false,\r\n  \"age\": 25,\r\n  \"salary\": 500000.00,\r\n  \"penalty\": -10.0,\r\n  \"hikeOnPreviousSalary\": 30.0,\r\n  \"phoneNumbers\": [\r\n    \"9876543210\"\r\n  ],\r\n  \"joiningDate\": \"2026-01-13\",\r\n  \"name\": \"Karan\",\r\n  \"email\": \"example@example.email\",\r\n  \"primaryCreditCardNumber\": \"5811111111111111\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/employees",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "employees"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateEmployeePUT",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"id\": 103,\r\n  \"isEmployeeActive\": true,\r\n  \"age\": 25,\r\n  \"salary\": 500000.00,\r\n  \"penalty\": -10.0,\r\n  \"hikeOnPreviousSalary\": 30.0,\r\n  \"phoneNumbers\": [\r\n    \"9876543210\"\r\n  ],\r\n  \"joiningDate\": \"2026-01-13\",\r\n  \"name\": \"Karan\",\r\n  \"email\": \"adam.smith@example.c\",\r\n  \"primaryCreditCardNumber\": \"5811111111111111\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/employees/103",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "employees",
+                "103"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateEmployeePATCH",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 103\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/employees/103",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "employees",
+                "103"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteEmployeeById",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/employees/608",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "employees",
+                "608"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Departments",
+      "item": [
+        {
+          "name": "GetAllDepartments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/departments",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "departments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetDepartmentById",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/departments/253",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "departments",
+                "253"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CreateNewDepartment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": null,\r\n    \"departmentCode\": \"IT\",\r\n    \"title\": \"Software Development\",\r\n    \"departmentCreationDate\": \"2024-01-15\",\r\n    \"departmentEndDate\": \"2026-12-31\",\r\n    \"isDepartmentActive\": true,\r\n    \"departmentURL\": \"https://github.com/software-dept\"\r\n}\r\n\r\n// {\r\n//     \"id\": null,\r\n//     \"departmentCode\": \"HR\",\r\n//     \"title\": \"Human Resources\",\r\n//     \"departmentCreationDate\": \"2026-01-16\",\r\n//     \"departmentEndDate\": \"2026-01-17\",\r\n//     \"isDepartmentActive\": true,\r\n//     \"departmentURL\": \"https://github.com/human-resources\"\r\n// }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/departments",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "departments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateDepartmentPUT",
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {
+              "content-type": true
+            }
+          },
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 252,\r\n    \"departmentCode\": \"HR\",\r\n    \"title\": \"Human Resources\",\r\n    \"departmentCreationDate\": \"2026-01-16\",\r\n    \"departmentEndDate\": \"2026-01-17\",\r\n    \"isDepartmentActive\": true,\r\n    \"departmentURL\": \"https://github.com/human-resources\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseURL}}/departments/252",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "departments",
+                "252"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateDepartmentPATCH",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"isDepartmentActive\" : \"FALSE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/departments/252",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "departments",
+                "252"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteDepartmentById",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/departments/253",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "departments",
+                "253"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseURL",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
