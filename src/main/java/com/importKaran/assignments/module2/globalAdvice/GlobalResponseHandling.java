@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.importKaran.assignments.module2.response.GlobalApiResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,6 +18,10 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 @RestControllerAdvice
 public class GlobalResponseHandling implements ResponseBodyAdvice<Object> {
+
+    @Autowired
+    ObjectMapper objectMapper;
+
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
         return true;    // making this true will enable spring boot to use the below, beforeBodyWrite method to intervene
@@ -32,18 +37,6 @@ public class GlobalResponseHandling implements ResponseBodyAdvice<Object> {
 //        As this is being handled by StringHttpMessageConverter, which needs to be handled in a different way
         if(body instanceof String) {
             try {
-                ObjectMapper objectMapper = new ObjectMapper();
-
-//                Also, if we don't register JavaTimeModule, then we will get errors that ObjectMapper is unable to
-//                serialize timestamp, as by default it doesn't have it
-                objectMapper.registerModule(new JavaTimeModule());
-
-//                If we don't disable this feature, then by default, the ObjectMapper will convert the timestamp in
-//                following format
-//                "timestamp": { "nano": 936173500, "year": 2026, "monthValue": 1, "dayOfMonth": 16, "hour": 21, "minute": 9, "second": 40, "month": "JANUARY", "dayOfWeek": "FRIDAY", "dayOfYear": 16, "chronology": { "id": "ISO", "calendarType": "iso8601", "isoBased": true } }
-//                So to avoid this, we have to disable this feature
-                objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-
                 return objectMapper.writeValueAsString(new GlobalApiResponse<>(body));
             } catch (JsonProcessingException e) {
                 return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
